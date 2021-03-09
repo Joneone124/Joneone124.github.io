@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="新博客第一篇正式的文章, Jone&#39;s Blog">
+    <meta name="keywords" content="聊一聊基于树的推荐模型TDM, Jone&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>新博客第一篇正式的文章 | Jone&#39;s Blog</title>
+    <title>聊一聊基于树的推荐模型TDM | Jone&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">新博客第一篇正式的文章</h1>
+                    <h1 class="description center-align post-title">聊一聊基于树的推荐模型TDM</h1>
                 </div>
             </div>
         </div>
@@ -431,14 +431,35 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%97%B2%E8%81%8A/">
-                                <span class="chip bg-color">闲聊</span>
+                            <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">推荐系统</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%91/">
+                                <span class="chip bg-color">树</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="post-category">
+                                技术分享
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -447,7 +468,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-07
+                    2021-03-09
                 </div>
                 
 
@@ -468,11 +489,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>​    这是我在这个新博客里写得第一篇文章。之前自己在服务器上的博客已经停止运行了，一方面是因为年纪过了学生优惠的区间，法兰克福服务器的价格贵到离谱。另一方面，域名续费金额也翻了几倍。还有在服务器上搭建的VPS越来越慢，并且时常被封禁。之前看不了高码率视频，现在更是搜个Google都费劲。再加上纯手工维护Web项目和数据库，很累，很不方便…个中原因，一言难尽。</p>
-<p>​    最近其实过得并不顺利，项目任务重，做完也没成果。加上考试翻车（主要是自己原因），之前刷绩点的小荆变成了求过的小荆。我已经感受到了本命年对我深深的恶意（笑）。</p>
-<p>​    但是生活还是要继续的。现在博客换了个新家，小荆也要继续fighting呀。</p>
-<p>​    之后闲时也会写写近况，或者写点技术分享。</p>
-<p>​    前路漫漫，上下求索…</p>
+                <h3 id="为何是TDM？"><a href="#为何是TDM？" class="headerlink" title="为何是TDM？"></a>为何是TDM？</h3><p>​        对大量商品做用户的个性化推荐，需要拿到用户和物品的相似度，最直接的办法就是挨个比较相似度，但是这样任务量太大，因为数量很大，所以采用矩阵分解的方式，分别计算user-vector和item-vector，用KNN找出最优解。</p>
+<p>​        但是由于计算成本过高，在收集更多用户和商品特征的交互上做得不好，因为一旦要计算每对用户和物品的特征交互，那就又成了挨个遍历了，比如神经网络（？？？）</p>
+<p>​        所以提出一种树的搜索方式，分层处理，从粗到细，召回要做多分类任务，类别数就是商品总数，用该方法后，每层类别减少，减少比较次数，所以模型可以考虑更多user-item的复杂交互。</p>
+<p>一般说，树的搜索效率比遍历高是logn。</p>
+<p><img src="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/image-20210122113857246.png" alt="树的结构"></p>
+<p>​        树中的每个叶子节点对应一个item，非叶子节点表示一个类别，越往上类别越宽泛，每个节点都可以映射为一个embedding。</p>
+<h3 id="如何构建树呢？"><a href="#如何构建树呢？" class="headerlink" title="如何构建树呢？"></a>如何构建树呢？</h3><p>​        如果每个节点已经有embedding，则用聚类分开。如果没有embedding，就按属性类别分开。</p>
+<p>​        先从level1开始，将level2中每个节点的embedding分别接入左边的模型，计算出一个概率值，谁大选谁，依次往下，最终选出物品。</p>
+<p><img src="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/image-20210122114620189.png" alt="DIN模型"></p>
+<h3 id="如何计算概率呢？"><a href="#如何计算概率呢？" class="headerlink" title="如何计算概率呢？"></a>如何计算概率呢？</h3><p>​        关于计算概率，α(j)是做归一化，p(j)(n|u)是用户对某节点感兴趣概率（通过用户embedding和物品embedding输入模型计算得到），所以p(j+1)(nc|u)是用户对树中某节点的子节点感兴趣的概率，即概率最大子节点再做归一化。</p>
+<p><img src="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/image-20210122150234141.png" alt="概率公式"></p>
+<p>​        不同的window将用户的行为序列按时间拆分。</p>
+<p>​        用户对应的embedding和节点embedding输入模型交互，提炼出更多的交互信息，这样即解决了KNN的难以获取交互信息的问题，也不用遍历所有item。</p>
+<h3 id="关于样本"><a href="#关于样本" class="headerlink" title="关于样本"></a>关于样本</h3><p>​        再说样本，要有正样本，也要有负样本，正样本就是用户最终选择的物品所对应的树的路径。负样本是在每层都随机抽一个不是正样本的节点。</p>
+<h3 id="啰嗦一句"><a href="#啰嗦一句" class="headerlink" title="啰嗦一句"></a>啰嗦一句</h3><p>​        当然，既然做成树了，精度必然会有损失，比如某个概率值很低的节点的最底下的叶子节点是符合用户行为特征的，只是其它的太不符合，压低了上方节点的概率，作为宁可错杀，绝不放过的召回任务，这么做有点可惜了。但是即使是这样，也是要比聚类好上不少。</p>
 
                 
             </div>
@@ -499,7 +530,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://joneone124.github.io/2021/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%AD%A3%E5%BC%8F%E7%9A%84%E5%8D%9A%E5%AE%A2/">https://joneone124.github.io/2021/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%AD%A3%E5%BC%8F%E7%9A%84%E5%8D%9A%E5%AE%A2/</a>
+                    <a href="https://joneone124.github.io/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/">https://joneone124.github.io/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +568,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%97%B2%E8%81%8A/">
-                                    <span class="chip bg-color">闲聊</span>
+                                <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">推荐系统</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%91/">
+                                    <span class="chip bg-color">树</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
                                 </a>
                             
                         </div>
@@ -709,7 +752,7 @@
         repo: 'web_common',
         owner: 'joneone124',
         admin: "joneone124",
-        id: '2021-03-07T10-55-39',
+        id: '2021-03-09T22-11-45',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -737,9 +780,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/">
                     <div class="card-image">
@@ -757,9 +801,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -772,6 +816,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -802,13 +847,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/06/a-test/">
+                <a href="/2021/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%AD%A3%E5%BC%8F%E7%9A%84%E5%8D%9A%E5%AE%A2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="a test">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="新博客第一篇正式的文章">
                         
-                        <span class="card-title">a test</span>
+                        <span class="card-title">新博客第一篇正式的文章</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -819,7 +864,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-07
                             </span>
                         <span class="publish-author">
                             
@@ -828,6 +873,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%97%B2%E8%81%8A/">
+                        <span class="chip bg-color">闲聊</span>
+                    </a>
+                    
                 </div>
                 
             </div>
