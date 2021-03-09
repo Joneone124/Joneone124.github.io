@@ -649,33 +649,33 @@
         <div class="card">
 
             
-            <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
+            
+            <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
     <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
         <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
         <span>评论</span>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
+    <div id="gitment-content" class="card-content"></div>
 </div>
 
-<script src="/libs/gitalk/gitalk.min.js"></script>
+<script src="/libs/gitment/gitment.js"></script>
 <script>
-    let gitalk = new Gitalk({
-        clientID: 'af328562a81feaec0c80',
-        clientSecret: '7f1a2d889c8efb94471af1be25eb04792fa7572c',
-        repo: 'web_common',
-        owner: 'joneone124',
-        admin: "joneone124",
-        id: '2021-03-09T07-54-43',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
+var gitment = new Gitment({
+    id: 'Tue Mar 09 2021 07:54:43 GMT+0800',
+    owner: 'joneone124',
+    repo: 'web_common',
+    oauth: {
+        client_id: 'af328562a81feaec0c80',
+        client_secret: '7f1a2d889c8efb94471af1be25eb04792fa7572c'
+    }
+});
 
-    gitalk.render('gitalk-container');
+gitment.render('gitment-content');
 </script>
-
-            
 
             
 
