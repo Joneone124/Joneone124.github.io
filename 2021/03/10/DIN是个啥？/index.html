@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="聊一聊基于树的推荐模型TDM, Jone&#39;s Blog">
+    <meta name="keywords" content="DIN是个啥？, Jone&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>聊一聊基于树的推荐模型TDM | Jone&#39;s Blog</title>
+    <title>DIN是个啥？ | Jone&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">聊一聊基于树的推荐模型TDM</h1>
+                    <h1 class="description center-align post-title">DIN是个啥？</h1>
                 </div>
             </div>
         </div>
@@ -439,12 +439,12 @@
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E6%A0%91/">
-                                <span class="chip bg-color">树</span>
+                            <a href="/tags/%E5%85%B4%E8%B6%A3%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">兴趣网络</span>
                             </a>
                         
-                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">深度学习</span>
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%8C%E8%A1%8C%E4%B8%BA%E5%BA%8F%E5%88%97%EF%BC%8Cembedding/">
+                                <span class="chip bg-color">深度学习，行为序列，embedding</span>
                             </a>
                         
                     </div>
@@ -468,7 +468,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-09
+                    2021-03-10
                 </div>
                 
 
@@ -489,21 +489,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="为何是TDM？"><a href="#为何是TDM？" class="headerlink" title="为何是TDM？"></a>为何是TDM？</h3><p>​        对大量商品做用户的个性化推荐，需要拿到用户和物品的相似度，最直接的办法就是挨个比较相似度，但是这样任务量太大，因为数量很大，所以采用矩阵分解的方式，分别计算user-vector和item-vector，用KNN找出最优解。</p>
-<p>​        但是由于计算成本过高，在收集更多用户和商品特征的交互上做得不好，因为一旦要计算每对用户和物品的特征交互，那就又成了挨个遍历了，比如神经网络（？？？）</p>
-<p>​        所以提出一种树的搜索方式，分层处理，从粗到细，召回要做多分类任务，类别数就是商品总数，用该方法后，每层类别减少，减少比较次数，所以模型可以考虑更多user-item的复杂交互。</p>
-<p>一般说，树的搜索效率比遍历高是logn。</p>
-<p><img src="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/image-20210122113857246.png" alt="树的结构"></p>
-<p>​        树中的每个叶子节点对应一个item，非叶子节点表示一个类别，越往上类别越宽泛，每个节点都可以映射为一个embedding。</p>
-<h3 id="如何构建树呢？"><a href="#如何构建树呢？" class="headerlink" title="如何构建树呢？"></a>如何构建树呢？</h3><p>​        如果每个节点已经有embedding，则用聚类分开。如果没有embedding，就按属性类别分开。</p>
-<p>​        先从level1开始，将level2中每个节点的embedding分别接入左边的模型，计算出一个概率值，谁大选谁，依次往下，最终选出物品。</p>
-<h5 id="（做细分到每个物品很慢，也可以写几层，最后一层和K近邻结合）"><a href="#（做细分到每个物品很慢，也可以写几层，最后一层和K近邻结合）" class="headerlink" title="（做细分到每个物品很慢，也可以写几层，最后一层和K近邻结合）"></a>（做细分到每个物品很慢，也可以写几层，最后一层和K近邻结合）</h5><p><img src="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/image-20210122114620189.png" alt="DIN模型"></p>
-<h3 id="如何计算概率呢？"><a href="#如何计算概率呢？" class="headerlink" title="如何计算概率呢？"></a>如何计算概率呢？</h3><p>​        关于计算概率，α(j)是做归一化，p(j)(n|u)是用户对某节点感兴趣概率（通过用户embedding和物品embedding输入模型计算得到），所以p(j+1)(nc|u)是用户对树中某节点的子节点感兴趣的概率，即概率最大子节点再做归一化。</p>
-<p><img src="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/image-20210122150234141.png" alt="概率公式"></p>
-<p>​        不同的window将用户的行为序列按时间拆分。</p>
-<p>​        用户对应的embedding和节点embedding输入模型交互，提炼出更多的交互信息，这样即解决了KNN的难以获取交互信息的问题，也不用遍历所有item。</p>
-<h3 id="关于样本"><a href="#关于样本" class="headerlink" title="关于样本"></a>关于样本</h3><p>​        再说样本，要有正样本，也要有负样本，正样本就是用户最终选择的物品所对应的树的路径。负样本是在每层都随机抽一个不是正样本的节点。</p>
-<h3 id="啰嗦一句"><a href="#啰嗦一句" class="headerlink" title="啰嗦一句"></a>啰嗦一句</h3><p>​        当然，既然做成树了，精度必然会有损失，比如某个概率值很低的节点的最底下的叶子节点是符合用户行为特征的，只是其它的太不符合，压低了上方节点的概率，作为宁可错杀，绝不放过的召回任务，这么做有点可惜了。但是即使是这样，也是要比聚类好上不少。</p>
+                <h3 id="DIN是啥？"><a href="#DIN是啥？" class="headerlink" title="DIN是啥？"></a>DIN是啥？</h3><p>在TDM中，接入的模型是DIN深度兴趣网络，关于DIN，主要是Activation Unit，核心思想是不使用一个固定的embedding来描述用户，而是将每一个用户曾经的行为都和候选物品交互，产生权值，在不同兴趣上使用经权值调整的不同的embedding。</p>
+<h5 id="（可以设计一个兴趣匹配池，匹配成功的属性越多，即对于一个物品，如果同时满足用户的喜好数越多，权值越大，如该用户喜欢NBA，也喜欢美妆，那么韦德同款遮瑕膏要优于韦德同款保温杯）"><a href="#（可以设计一个兴趣匹配池，匹配成功的属性越多，即对于一个物品，如果同时满足用户的喜好数越多，权值越大，如该用户喜欢NBA，也喜欢美妆，那么韦德同款遮瑕膏要优于韦德同款保温杯）" class="headerlink" title="（可以设计一个兴趣匹配池，匹配成功的属性越多，即对于一个物品，如果同时满足用户的喜好数越多，权值越大，如该用户喜欢NBA，也喜欢美妆，那么韦德同款遮瑕膏要优于韦德同款保温杯）"></a>（可以设计一个兴趣匹配池，匹配成功的属性越多，即对于一个物品，如果同时满足用户的喜好数越多，权值越大，如该用户喜欢NBA，也喜欢美妆，那么韦德同款遮瑕膏要优于韦德同款保温杯）</h5><p><img src="/2021/03/10/DIN%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/2020021817192837.png" alt="DIN"></p>
+<h3 id="这个图是咋回事？"><a href="#这个图是咋回事？" class="headerlink" title="这个图是咋回事？"></a>这个图是咋回事？</h3><p>其中User profile features 代表着用户的特征，但这些特征通常是比较粗糙的，比如性别、年龄。Context Features是跟场景有关的特征，通常就是时间戳之类。User Behaviors,代表着用户行为特征，主要就是过去用户明确表示感兴趣的item统统都打包起来。</p>
+<p>每个曾经的用户行为都跟Candidate Ad在Activation Unit中交互，embedding（其实是embedding中的概率参数）变成什么样子，和每次来的item有关。再对embedding池化。</p>
+<p>所有的输入就是User profile features的embedding、池化后的embedding、Candidate Ad的embedding、</p>
+<p>Context Features的embedding。</p>
+<p>最后通过softmax得到一个概率，即user有多喜欢这个item</p>
+<p>（可以再接人为定义的属性）</p>
+<h3 id="啰嗦一嘴"><a href="#啰嗦一嘴" class="headerlink" title="啰嗦一嘴"></a>啰嗦一嘴</h3><p>使用DIN，可以根据不同的物品调整embedding里的各项权值，做到精准把控用户没得每一个喜欢的点都能覆盖到相关的物品，但这么做也会丧失一定的效率，这是必然的。</p>
 
                 
             </div>
@@ -530,7 +524,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://joneone124.github.io/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/">https://joneone124.github.io/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/</a>
+                    <a href="https://joneone124.github.io/2021/03/10/DIN%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/">https://joneone124.github.io/2021/03/10/DIN%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -576,12 +570,12 @@
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E6%A0%91/">
-                                    <span class="chip bg-color">树</span>
+                                <a href="/tags/%E5%85%B4%E8%B6%A3%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">兴趣网络</span>
                                 </a>
                             
-                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">深度学习</span>
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%8C%E8%A1%8C%E4%B8%BA%E5%BA%8F%E5%88%97%EF%BC%8Cembedding/">
+                                    <span class="chip bg-color">深度学习，行为序列，embedding</span>
                                 </a>
                             
                         </div>
@@ -752,7 +746,7 @@
         repo: 'web_common',
         owner: 'joneone124',
         admin: "joneone124",
-        id: '2021-03-09T22-11-45',
+        id: '2021-03-10T08-47-20',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -780,9 +774,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/03/10/DIN%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/">
                     <div class="card-image">
@@ -800,9 +795,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -815,6 +810,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -845,13 +841,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%AD%A3%E5%BC%8F%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+                <a href="/2021/03/09/%E8%81%8A%E4%B8%80%E8%81%8A%E5%9F%BA%E4%BA%8E%E6%A0%91%E7%9A%84%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8BTDM/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="新博客第一篇正式的文章">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="聊一聊基于树的推荐模型TDM">
                         
-                        <span class="card-title">新博客第一篇正式的文章</span>
+                        <span class="card-title">聊一聊基于树的推荐模型TDM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -862,14 +858,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                    随笔
+                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="post-category">
+                                    技术分享
                                 </a>
                             
                             
@@ -879,8 +875,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%97%B2%E8%81%8A/">
-                        <span class="chip bg-color">闲聊</span>
+                    <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">推荐系统</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%91/">
+                        <span class="chip bg-color">树</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
                     </a>
                     
                 </div>
