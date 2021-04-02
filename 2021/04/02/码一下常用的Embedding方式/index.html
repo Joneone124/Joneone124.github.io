@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="FM因子分解机？, Jone&#39;s Blog">
+    <meta name="keywords" content="码一下常用的Embedding方式, Jone&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>FM因子分解机？ | Jone&#39;s Blog</title>
+    <title>码一下常用的Embedding方式 | Jone&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">FM因子分解机？</h1>
+                    <h1 class="description center-align post-title">码一下常用的Embedding方式</h1>
                 </div>
             </div>
         </div>
@@ -435,12 +435,12 @@
                                 <span class="chip bg-color">推荐系统</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/embedding/">
+                                <span class="chip bg-color">embedding</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">机器学习</span>
+                            <a href="/tags/%E5%8F%AC%E5%9B%9E/">
+                                <span class="chip bg-color">召回</span>
                             </a>
                         
                     </div>
@@ -451,8 +451,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="post-category">
-                                技术分享
+                            <a href="/categories/%E5%B0%8F%E8%AE%B0/" class="post-category">
+                                小记
                             </a>
                         
                     </div>
@@ -464,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-04-02
                 </div>
                 
 
@@ -485,18 +485,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="FM因子分解机？"><a href="#FM因子分解机？" class="headerlink" title="FM因子分解机？"></a>FM因子分解机？</h3><p>FM是用于预估CTR的经典模型，比较善于处理稀疏数据。</p>
-<h3 id="为什么是FM？"><a href="#为什么是FM？" class="headerlink" title="为什么是FM？"></a>为什么是FM？</h3><p>先说咱比较熟悉的线性回归（一说逻辑回归，即套不套Sigmoid），线性回归可写成下面这样<img src="/2021/03/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/540591d631e94e79ff58ef4e8b2d833.png" alt="线性回归"></p>
-<p>可以看出，一个特征对应一个参数。好处很明显，可以适应比较稀疏的数据等。坏处呢？不能很好地描述各个特征之间地关系。这是很重的数据，我们可不能没有它。那么我们让各个特征来做个交互吧！</p>
-<p>看上去不错！但是在遇到一些稀疏的id类特征时，xi与xj的乘积为零，也就无法更新梯度。所以，我们需要一个更好的方式来表述特征之间的交互。</p>
-<p>由此引入FM。</p>
-<h3 id="FM分解了什么因子？"><a href="#FM分解了什么因子？" class="headerlink" title="FM分解了什么因子？"></a>FM分解了什么因子？</h3><p>仅考虑二阶特征组合的话，FM模型表达式可以写为<img src="/2021/03/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/55352f07d1a445c35a8f0a3c462728b.png" alt="FM表达式"></p>
-<p>我们可以通过矩阵分解的手段，将矩阵拆分为两个向量。</p>
-<p>在分解评分矩阵中，我们将一个rating矩阵分解为两个又多个隐向量构成的user矩阵和item矩阵。每个user和item都为各自矩阵的一个向量，向量的点积为打分。<img src="/2021/03/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/86db25bfe135201f32c21a542836ecd.png" alt="rating矩阵分解"></p>
-<p>在FM中，vj即是第j维特征xj的隐向量，而xi和xj的交叉项系数是vi，vj的内积，即wij变为了&lt;vi,vj&gt;。</p>
-<p><img src="/2021/03/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/471487ac179656f7badbaf54aed6073.png" alt="矩阵分解"></p>
-<p>如此一来，两个向量参数分别更新。之前需要两特征都不为零，才可以更新梯度。而现在，只需要一方不为零，另一方在要求范围中的任意特征不为零即可。</p>
-<p>这样便缓解了参数更新困难的情况。</p>
+                <p>随手记录一下常用的Embedding，很有启发作用：</p>
+<ol>
+<li>以SVD为代表的MF方式。通过对user-item-score矩阵的分解，或者user-item的隐式矩阵分解，可以获取user与item的隐向量，该向量可以作为embedding向量使用。</li>
+<li>FM算法。FM学习了各个特征的隐向量表示，从而可以将这些学习到的隐向量作为特征的embedding使用。</li>
+<li>DNN-Embedding 通过神经网络，利用接入Embedding层与目标loss进行joint train，从而学习其特征表达，这是一种端到端的embedding训练方式(end-to-end)。</li>
+<li>item2vec 与word2vec类似的方式。<br>5.graph embedding，是基于图模型的方法，包括deep walk, node2vec, eges等方法。</li>
+</ol>
 
                 
             </div>
@@ -523,7 +518,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://joneone124.github.io/2021/03/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/">https://joneone124.github.io/2021/03/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/</a>
+                    <a href="https://joneone124.github.io/2021/04/02/%E7%A0%81%E4%B8%80%E4%B8%8B%E5%B8%B8%E7%94%A8%E7%9A%84Embedding%E6%96%B9%E5%BC%8F/">https://joneone124.github.io/2021/04/02/%E7%A0%81%E4%B8%80%E4%B8%8B%E5%B8%B8%E7%94%A8%E7%9A%84Embedding%E6%96%B9%E5%BC%8F/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -565,12 +560,12 @@
                                     <span class="chip bg-color">推荐系统</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/embedding/">
+                                    <span class="chip bg-color">embedding</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">机器学习</span>
+                                <a href="/tags/%E5%8F%AC%E5%9B%9E/">
+                                    <span class="chip bg-color">召回</span>
                                 </a>
                             
                         </div>
@@ -741,7 +736,7 @@
         repo: 'web_common',
         owner: 'joneone124',
         admin: "joneone124",
-        id: '2021-03-20T19-25-26',
+        id: '2021-04-02T16-09-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -774,7 +769,65 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/03/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/">
+                <a href="/2021/04/02/%E7%A0%81%E4%B8%80%E4%B8%8B%E5%B8%B8%E7%94%A8%E7%9A%84Embedding%E6%96%B9%E5%BC%8F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="码一下常用的Embedding方式">
+                        
+                        <span class="card-title">码一下常用的Embedding方式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B0%8F%E8%AE%B0/" class="post-category">
+                                    小记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">推荐系统</span>
+                    </a>
+                    
+                    <a href="/tags/embedding/">
+                        <span class="chip bg-color">embedding</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8F%AC%E5%9B%9E/">
+                        <span class="chip bg-color">召回</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/20/FM%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3%E6%9C%BA%EF%BC%9F/">
                     <div class="card-image">
                         
                         
@@ -791,7 +844,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-20
                             </span>
                         <span class="publish-author">
                             
@@ -805,7 +858,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -819,75 +871,6 @@
                     
                     <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
                         <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/03/10/DIN%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="DIN是个啥？">
-                        
-                        <span class="card-title">DIN是个啥？</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="post-category">
-                                    技术分享
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">推荐系统</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%85%B4%E8%B6%A3%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">兴趣网络</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BA%8F%E5%88%97/">
-                        <span class="chip bg-color">行为序列</span>
-                    </a>
-                    
-                    <a href="/tags/embedding/">
-                        <span class="chip bg-color">embedding</span>
                     </a>
                     
                 </div>
